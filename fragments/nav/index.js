@@ -1,15 +1,43 @@
 import styled from 'styled-components'
-import { WHITE } from '../../styles/colors'
+import { WHITE, GRAY, DARK_GRAY } from '../../styles/colors'
+
+const NAV_HEIGHT = '2.5rem'
 
 const Navbar = styled.div`
   width: 100%;
   background: ${WHITE};
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   box-shadow: 4px 0 32px rgba(0, 0, 0, 0.3);
+`
+
+const Logo = styled.img`
+  height: ${NAV_HEIGHT};
+  width: auto;
+`
+
+const Bar = styled.div`
+  height: ${NAV_HEIGHT};
+  width: 2px;
+  display: inline-block;
+  background: ${GRAY};
+  margin: 0 2rem;
+`
+
+const NavText = styled.h2`
+  font-weight: normal;
+  display: inline-block;
+  line-height: ${NAV_HEIGHT};
+  margin: 0;
+  vertical-align: top;
+  color: ${DARK_GRAY};
 `
 
 export const Nav = () => (
   <Navbar>
-    This is the navbar
+    <Logo src="/static/img/logo.png" />
+    <Bar />
+    <NavText>
+      Get a quote
+    </NavText>
   </Navbar>
 )
