@@ -10,17 +10,23 @@ class NewQuote extends Component {
     this.handleSelect = this.handleSelect.bind(this)
   }
 
-  handleSelect(qData) {
+  async handleSelect(qData) {
     const data = {
       json: JSON.stringify(qData)
     }
 
     console.log(data)
 
-    fetch('http://localhost:8080/updatesession', {
+    const res = await fetch('http://localhost:8080/updatesession', {
       method: 'POST',
       data,
-    }).then(console.log)
+    })
+
+    console.log(res)
+
+    const resData = await res.json()
+
+    console.log(resData)
   }
 
   render() {

@@ -31,4 +31,8 @@ export const TextWrapper = styled.div`
   color: ${DARK_GRAY};
   line-height: 1.5;
   font-family: ${font};
+
+  p {
+    font-size: inherit;
+  }
 `
