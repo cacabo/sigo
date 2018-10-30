@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { WHITE, GRAY, DARK_GRAY } from '../../styles/colors'
+import { Header } from '../../components'
 
 const NAV_HEIGHT = '2.5rem'
 
@@ -23,21 +24,21 @@ const Bar = styled.div`
   margin: 0 2rem;
 `
 
-const NavText = styled.h2`
-  font-weight: normal;
-  display: inline-block;
-  line-height: ${NAV_HEIGHT};
-  margin: 0;
-  vertical-align: top;
-  color: ${DARK_GRAY};
-`
+// const NavText = styled.h2`
+//   font-weight: normal;
+//   display: inline-block;
+//   line-height: ${NAV_HEIGHT};
+//   margin: 0;
+//   vertical-align: top;
+//   color: ${DARK_GRAY};
+// `
 
 export const Nav = () => (
   <Navbar>
     <Logo src="/static/img/logo.png" />
     <Bar />
-    <NavText>
+    <Header margin="0.2rem 0 0 0" lineHeight={NAV_HEIGHT}>
       Get a quote
-    </NavText>
+    </Header>
   </Navbar>
 )

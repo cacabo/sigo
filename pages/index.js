@@ -1,12 +1,50 @@
-import styled from 'styled-components'
+import fetch from 'isomorphic-unfetch'
+import { Component } from 'react'
 
-import { Layout, Quote } from '../fragments'
+import { Layout, Question } from '../fragments'
 import { Container } from '../components'
 
-export default () => (
-  <Layout>
-    <Container>
-      <Quote />
-    </Container>
-  </Layout>
-)
+class NewQuote extends Component {
+  constructor(props) {
+    super(props)
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  handleSelect(qData) {
+    const data = {
+      json: JSON.stringify(qData)
+    }
+
+    console.log(data)
+
+    fetch('http://localhost:8080/updatesession', {
+      method: 'POST',
+      data,
+    }).then(console.log)
+  }
+
+  render() {
+    return (
+      <Layout>
+        <Container paddingTop="6vw">
+          <Question
+            handleSelect={this.handleSelect}
+            {...this.props}
+          />
+        </Container>
+      </Layout>
+    )
+  }
+}
+
+NewQuote.getInitialProps = async function() {
+  const res = await fetch('http://localhost:8080/createsession?langid=test2', {
+    method: 'POST',
+  })
+
+  const data = await res.json()
+
+  return data
+}
+
+export default NewQuote
